@@ -6,10 +6,13 @@ authors = [
     {name = "Eduardo Henrique",email = "dudugama03@gmail.com"}
 ]
 readme = "README.md"
-requires-python = ">=3.12"
+requires-python = ">=3.12.1"
 dependencies = [
     "flake8 (>=7.2.0,<8.0.0)",
-    "black (>=25.1.0,<26.0.0)"
+    "black (>=25.1.0,<26.0.0)",
+    "pandera (>=0.23.1,<0.24.0)",
+    "pandas (>=2.2.3,<3.0.0)",
+    "pyarrow (>=19.0.1,<20.0.0)"
 ]
 
 
