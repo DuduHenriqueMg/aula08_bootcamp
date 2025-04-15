@@ -1,9 +1,9 @@
 import pandas as pd
 import os
 import glob
+from utils_log import log_decorator
 
-
-
+@log_decorator
 def extrair_dados(pasta: str) -> pd.DataFrame:
     
     arquivos_json = glob.glob(os.path.join(pasta, '*.json'))
@@ -12,7 +12,7 @@ def extrair_dados(pasta: str) -> pd.DataFrame:
 
     return df_total
 
-
+@log_decorator
 def calcular_kpi_de_total_de_vendas(df: pd.DataFrame) -> pd.DataFrame:
     
     df["Total"] = df["Quantidade"] * df["Venda"]
@@ -23,7 +23,8 @@ def carregar_dados(df: pd.DataFrame, format_saida: list):
         df.to_csv('dados.csv')
     if 'parquet' in format_saida:
         df.to_parquet('dados.parquet')
-        
+
+@log_decorator     
 def pipeline_calcular_kpi_de_vendas_consolidao(pasta: str, formato_de_saida:list):
     df_extraido = extrair_dados(pasta)
     df_calculado = calcular_kpi_de_total_de_vendas(df_extraido)
